@@ -1,0 +1,124 @@
+.product-card {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) ;
+    border-radius: 20px;
+    position: relative;
+    caret-color: transparent;
+}
+
+.product-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin-top: 40px;
+}
+
+.product-card .product-card-title {
+    font-weight: bold;
+    margin: 20px;
+    width: 100%;
+    text-align: center;
+    padding: 0 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.product-card .product-card-description {
+    text-align: center;
+    font-size: 0.85rem;
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    
+    /* Multi-line ellipsis using CSS. */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;    /* start showing ellipsis when 3rd line is reached */
+    white-space: pre-wrap;    /* let the text wrap preserving spaces */
+}
+
+.product-card .product-card-discount {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #e21717;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border-radius: 8px;
+}
+
+.product-card .product-card-category {
+    position: absolute;
+    bottom: 150px;
+    right: -5px;
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transform: skewX(-5deg);
+    opacity: 0.9;
+}
+
+.product-card-cartbox {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-card-cartbox .product-card-price {
+    width: 65%;
+    text-align: center;
+    color: #e21717;
+    font-size: 20px;
+    text-wrap: nowrap;
+}
+
+
+.product-card-price span:first-child {
+    font-weight: bold;
+}
+
+
+.product-card-manage-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: bottom;
+    width: 60px;
+}
+.product-card-cartbox .fa-pencil-square-o {
+    padding-top: 3px;
+    font-size: 30px;
+    /* line-height: 40px; */
+    color: green;
+}
+
+.product-card-cartbox .fa-pencil-square-o:hover{
+    color: #00af00;
+    cursor: pointer;
+}
+
+.product-card-cartbox .fa-trash {
+    font-size: 30px;
+    /* line-height: 40px; */
+    color: red;
+}
+
+.product-card-cartbox .fa-trash:hover {
+    /* line-height: 40px; */
+    color: #ff5454;
+    cursor: pointer;
+}

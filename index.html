@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/product_card.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/filter.css">
+    <link rel="stylesheet" href="./css/pagination.css">
+    <link rel="stylesheet" href="./css/confirm-modal.css">
+    
+    <title>product_cards</title>
+</head>
+
+<body>
+    <div class="navbar-container">
+        <div class="navbar-sitename" id="siteName">eShop</div>
+        <div class="navbar-createBtn" id="createBtn">create Product</div>
+    </div>
+    
+    <!-- Фільтрація -->
+    <div class="filter-container">
+        <form class="filter-form">
+            <div class="filter-category">
+                <select class="form-select" id="filter-category">
+                    <option value="all">-- All categories --</option>
+                    <option value="smartphones">smartphones</option>
+                    <option value="laptops">laptops</option>
+                    <option value="fragrances">fragrances</option>
+                    <option value="skincare">skincare</option>
+                    <option value="groceries">groceries</option>
+                    <option value="home-decoration">home-decoration</option>
+                    <option value="furniture">furniture</option>
+                    <option value="tops">tops</option>
+                    <option value="womens-dresses">womens-dresses</option>
+                    <option value="womens-shoes">womens-shoes</option>
+                    <option value="mens-shirts">mens-shirts</option>
+                    <option value="mens-shoes">mens-shoes</option>
+                    <option value="mens-watches">mens-watches</option>
+                    <option value="womens-watches">womens-watches</option>
+                    <option value="womens-bags">womens-bags</option>
+                    <option value="womens-jewellery">womens-jewellery</option>
+                    <option value="womens-jewellery">womens-jewellery</option>
+                    <option value="automotive">automotive</option>
+                    <option value="motorcycle">motorcycle</option>
+                    <option value="lighting">lighting</option>
+                </select>
+            </div>
+            <div class="filter-search">
+                <input class="form-control" id="filter-search" type="text" placeholder="-- search product --">
+            </div>
+            <div class="filter-sort">
+                <select class="form-select" id="filter-sort">
+                    <option selected value="nosort">-- sort products (Don't sort) --</option>
+                    <option value="incPr">by increasing price</option>
+                    <option value="decPr">by decreasing price</option>
+                    <option value="nf">newest first</option>
+                    <option value="of">oldest first</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Крнтейнер продуктів -->
+    <div class="product-container">    </div>
+    
+    <!-- Крнтейнер пагінації -->
+    <div class="pagination-container"> 
+        
+    </div>
+
+    <!-- Модальне вікно створення та редагування картки продукту-->
+    <div id="myModal" class="modal-overlay" data-close="true">
+        <div class="modal-content">
+            <span class="close" data-close="true">&times;</span>
+            <h2 class="modal-title" id="modalTitle">Create Product</h2>
+            <form id="productForm" name="productForm" class="productForm">
+                <input type="hidden" id="productId" name="productId">
+                
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+    
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" required></textarea>
+    
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" required>
+    
+                <label for="discountPercentage">Discount:</label>
+                <input type="text" id="discountPercentage" name="discountPercentage" required>
+    
+                <label for="stock">In stock:</label>
+                <input type="number" id="stock" name="stock" required>
+    
+                <!-- <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required> -->
+    
+                <label for="category">Category:</label>
+                <select name="category" id="category">
+                    <option value="smartphones">smartphones</option>
+                    <option value="laptops">laptops</option>
+                    <option value="fragrances">fragrances</option>
+                    <option value="skincare">skincare</option>
+                    <option value="groceries">groceries</option>
+                    <option value="home-decoration">home-decoration</option>
+                    <option value="furniture">furniture</option>
+                    <option value="tops">tops</option>
+                    <option value="womens-dresses">womens-dresses</option>
+                    <option value="womens-shoes">womens-shoes</option>
+                    <option value="mens-shirts">mens-shirts</option>
+                    <option value="mens-shoes">mens-shoes</option>
+                    <option value="mens-watches">mens-watches</option>
+                    <option value="womens-watches">womens-watches</option>
+                    <option value="womens-bags">womens-bags</option>
+                    <option value="womens-jewellery">womens-jewellery</option>
+                    <option value="womens-jewellery">womens-jewellery</option>
+                    <option value="automotive">automotive</option>
+                    <option value="motorcycle">motorcycle</option>
+                    <option value="lighting">lighting</option>
+                </select>
+    
+                <label for="thumbnail">Link to picture:</label>
+                <input type="url" id="thumbnail" name="thumbnail" required>
+    
+                <input type="submit" value="Save Product">
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Модальне вікно підтвердження (конфірмації) видалення продукту-->
+    <!-- Модальне вікно -->
+    <div id="confirmationModal" class="confirm-modal" data-close="true">
+        <div class="confirm-modal-content">
+            <div class="confirm-modal-header">
+                <h2>Confirm Deletion</h2>
+                <button class="confirm-close-btn" id="closeConfirmModalBtn" data-close="true">&times;</button>
+            </div>
+            <div class="confirm-product-info">
+                <p>Are you sure you want to delete: <br><strong id="confirmProductName">this product</strong>?</p>
+            </div>
+            <div class="confirm-modal-footer">
+                <button class="confirm-btn confirm-btn-delete" id="confirmDelete">Delete</button>
+                <button class="confirm-btn confirm-btn-cancel" id="cancelDelete" data-close="true">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="./js/productController.js"></script>
+    <script src="./js/modal.js"></script> -->
+    <script src="./js/main.js" type="module"></script>
+</body>
+
+</html>
